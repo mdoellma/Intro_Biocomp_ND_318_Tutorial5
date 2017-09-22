@@ -45,6 +45,31 @@ print(females.gender.unique())
 #CHALLENGE
 #Task 1 (brittni)
 
-#Task 2 (devin)
 
+
+
+#Task 2 (devin)
+#Part1: gender, yearsExperience, and wage for the highest earner
+#first sort by wage
+wagesSorted=wages.sort_values(['wage'], ascending=False)
+highest_earner=wagesSorted.head(1)
+highest_earner
+#need to remove yearsSchool 
+print("Highest Earner Info:", highest_earner[['gender','yearsExperience','wage']])
+#Part2: gender, yearsExerience, and wage for the lowest earner
+#use the already sorted dataframe
+lowest_earner=wagesSorted.tail(1)
+lowest_earner
+#need to remove yearsSchool
+print("Lowest Earner Info:", lowest_earner[['gender','yearsExperience','wage']])
+#Part3: number of females in the top ten earners in this dataset
+#use the already sorted dataframe
+topTenEarners=wagesSorted.head(10)
+topTenEarnersFemale=topTenEarners[topTenEarners.gender=="female"]
+numberTopTenEarnersFemale=topTenEarnersFemale.shape#the first value in the tuple
+print("Number of females in the top ten earners:",numberTopTenEarnersFemale[0])
 #Task 3 (together)
+
+
+
+
