@@ -37,6 +37,15 @@ w = wages.sort_values('wage')
 w10 = w.iloc[:10] #need 10 because first one is column headers
 print w10
 
+female_tally = 0
+for i in w10.gender:
+    if i == "female":
+        female_tally = female_tally + 1
+        
+print "Number of females in top ten earners is:"
+
+        
+
 
 
 
