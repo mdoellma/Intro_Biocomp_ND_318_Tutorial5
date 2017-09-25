@@ -4,6 +4,7 @@
 
 #Check working directory!!
 
+#Q1 code 
 f = open('myoutput.txt' ,'w+')
 print f 
 
@@ -24,7 +25,18 @@ print z,
 sorted_data = z.sort_values('yearsExperience')
 print sorted_data 
 
-sorted_data.to_csv(path_or_buf=f, sep=',')
+sorted_data.to_csv(path_or_buf=f, sep=' ')
 
 
 f.close()
+
+#Q2 code is below 
+import pandas
+wages = pandas.read_csv("wages.csv")
+w = wages.sort_values('wage')
+w10 = w.iloc[:10] #need 10 because first one is column headers
+print w10
+
+
+
+
