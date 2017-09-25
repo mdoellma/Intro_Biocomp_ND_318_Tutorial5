@@ -41,9 +41,9 @@ female_tally = 0
 for i in w10.gender:
     if i == "female":
         female_tally = female_tally + 1
-        
-print "Number of females in top ten earners is:"
 
+print "Number of females in top ten earners is:" 
+print female_tally
         
 
 
