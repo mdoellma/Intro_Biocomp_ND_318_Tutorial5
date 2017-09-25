@@ -1,4 +1,4 @@
-output.txt gender yearsExperience
+ gender yearsExperience
 168 female 1
 215 female 2
 15 female 3
