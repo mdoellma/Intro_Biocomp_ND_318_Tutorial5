@@ -32,4 +32,14 @@ female_tally = 0
 for i in top_ten.gender:
     if i == "female":
         female_tally = female_tally + 1
-print(female_tally)        
+print(female_tally)   
+
+#Part 3: Difference between college and high school wages
+
+#Trying to grep out specific number of school years
+file16 = open("wages.csv","r") #file for reading
+file16.readline() #to skip over first line so that it reads the rest as integer
+for line in file16: #split line, check column 3 (index 2) for 16, turn into integer with int
+    if int(line.split(",")[2])==16:
+        print(line)
+        
