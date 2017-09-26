@@ -1,0 +1,6 @@
+#Part 1: Write file with gender and years experience sorted
+import pandas
+data = pandas.read_csv("wages.csv",header=0,sep=",") #to load the wages file
+gender_exp = data.iloc[:,0:2] #to select first two columns only (up to but not including index 2, only 0-1)
+sort_gender = gender_exp.sort_values(["gender","yearsExperience"]) #sort by gender and years experience
+sort_gender.to_csv("GenderExperience.csv",sep=" ") #write to file GenderExperience, include space between columns
