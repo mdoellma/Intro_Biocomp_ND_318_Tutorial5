@@ -33,7 +33,7 @@ f.close()
 #Q2 code is below 
 import pandas
 wages = pandas.read_csv("wages.csv")
-w = wages.sort_values('wage')
+w = wages.sort_values('wage', ascending = False)
 w10 = w.iloc[:10] #need 10 because first one is column headers
 print w10
 
