@@ -28,7 +28,8 @@ data4 = pandas.read_csv("wages.csv",header=0,sep=",") #load file
 gender_wage = data4.iloc[:, [0,3]] #select the columns we want
 sort_gender_wage = gender_wage.sort_values(["wage"]) #sort by wage
 top_ten = sort_gender_wage.tail(10) #find the highest 10 earners
-top_ten.to_csv("TopTen.csv",sep=" ") #make a file for the top ten earners
-
-
-
+female_tally = 0
+for i in top_ten.gender:
+    if i == "female":
+        female_tally = female_tally + 1
+print(female_tally)        
