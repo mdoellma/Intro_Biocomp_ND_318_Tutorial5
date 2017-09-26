@@ -4,7 +4,7 @@
 
 =======
 # Script for Ex 5 CHALLENGE
-#Task 1 (brittni)
+#Task 1 (Brittni)
 
 #SET WORKING DIRECTORY WITH 'wages.csv' INSIDE FOR FOLLOWING CODE TO WORK
 # For Brittni: os.chdir('/Users/brittnibertolet/Desktop/Intro_Biocomp_ND_318_Tutorial5/')
@@ -61,5 +61,7 @@ NoCollegeMinimum=np.average(schoolTwelve.wage)
 schoolSixteen=wages[wages.yearsSchool==16]
 CollegeMinimum=np.average(schoolSixteen.wage)
 print("Minimum Starting Wage For Individuals with No College:",NoCollegeMinimum,"Minimum Starting Wage for Individuals with College:",CollegeMinimum)
-
+#take the difference between the two groups
+Difference=np.subtract(CollegeMinimum, NoCollegeMinimum)
+print("Difference in Starting Wage Between College Graduates and Not:", Difference)
 
