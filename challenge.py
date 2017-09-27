@@ -32,7 +32,15 @@ f.close()
 
 #Q2 code is below 
 import pandas
-wages = pandas.read_csv("wages.csv")
+wages = pandas.read_csv("wages.csv", delimiter=",")
+
+column=data.iloc[0:,:4]
+print(column)
+w = data.sort_values('wage', ascending = False)
+w=w.iloc[0:1]
+print(w)
+
+
 w = wages.sort_values('wage', ascending = False)
 w10 = w.iloc[:10] #need 10 because first one is column headers
 print w10
