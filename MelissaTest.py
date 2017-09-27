@@ -3,12 +3,10 @@ import numpy
 data = pandas.read_csv("wages.csv", delimiter=",")
 
 
-column=data.iloc[0:,:4]
-print(column)
-w = data.sort_values('wage', ascending = False)
-w=w.iloc[0:1]
-print("The highest Earner is",w)
+H = data.sort_values('wage', ascending = False)
+H=H.iloc[0:1]
+print "The highest Earner is",'\n',H
 w = data.sort_values('wage', ascending = False)
 w=w.iloc[-1]
-print("The Lowest Earner is",w)
+print "The Lowest Earner is",'\n',w
 
