@@ -43,3 +43,10 @@ for line in file16: #split line, check column 3 (index 2) for 16, turn into inte
     if int(line.split(",")[2])==16:
         print(line)
         
+#Trying to grep out 12 years of school
+file12 = open("wages.csv","r") #file for reading
+file12.readline()
+for line in file12:
+    if int(line.split(",")[2])==12:
+        print(line)
+        
