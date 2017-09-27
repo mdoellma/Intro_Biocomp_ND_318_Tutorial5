@@ -35,18 +35,43 @@ for i in top_ten.gender:
 print(female_tally)   
 
 #Part 3: Difference between college and high school wages
-
-#Trying to grep out specific number of school years
-file16 = open("wages.csv","r") #file for reading
-file16.readline() #to skip over first line so that it reads the rest as integer
-for line in file16: #split line, check column 3 (index 2) for 16, turn into integer with int
+#For "grepping" with for loop, write to a separate output file to continue cutting/sorting grepped file
+import numpy
+import pandas
+fileOut = open("fileOut.tst","w") #making file to write to after "grepping" the years of school we want (16)
+fileIn = open("wages.csv","r") #readable file for input
+fileIn.readline() #skip first line because it is headers without integers
+for line in fileIn: #split into columns by "," if integer in [2] is 16, write line to fileOut (basically grep for 16)
     if int(line.split(",")[2])==16:
-        print(line)
-        
-#Trying to grep out 12 years of school
-file12 = open("wages.csv","r") #file for reading
-file12.readline()
-for line in file12:
+        #print(line) #just a print step to check
+        fileOut.write(line)
+yearschool16 = pandas.read_csv("fileOut.tst") #to open output file with 16 years in school column
+#print(yearschool16) #This was a print step to check; now # so it won't print
+wage_only = yearschool16.iloc[:,3] #show only wage column
+#print(wage_only) #this step, only for checking
+wage_sort=wage_only.sort_values() #sort wage column
+#print(wage_sort) #this step, only for checking
+low_wage16 = float(wage_sort.head(1)) #float is used because of the decimal in the number, can't use integer
+print("Lowest wage for college")
+print(low_wage16)
+
+fileOut2 = open("fileOut2.tst","w") #making file to write to for "grepping" 12 years
+fileIn2 = open("wages.csv","r") #readable file for input
+fileIn2.readline() #skip first line because it is headers without integers
+for line in fileIn2: #split into columns by "," if integer in [2] is 12, write line to fileOut2
     if int(line.split(",")[2])==12:
-        print(line)
+        #print(line)#this step, only for checking
+        fileOut2.write(line)
+yearschool12 = pandas.read_csv("fileOut2.tst") #to open output file with 12 years in school column
+#print(yearschool12) #this step, only for checking
+wage_only12 = yearschool12.iloc[:,3]
+#print(wage_only12) #this step, only for checking
+wage_sort12=wage_only12.sort_values()
+#print(wage_sort12) #this step, only for checking
+low_wage12 = float(wage_sort12.head(1))
+print("Lowest wage for high school")
+print(low_wage12)
+print("Difference in lowest wage between college and high school")
+difference = float(low_wage16) - float(low_wage12) #float used for decimal numbers
+print(difference)
         
