@@ -30,3 +30,15 @@ first2columnsA
 A.to_csv("challenge1.txt",sep=' ')
 
 #START OF CHALLENGE 2
+#isolate the gender, yearsexp, and wages for the dataframe (df)
+Slice3=wages.loc[:, ['gender','yearsExperience','wage' ]]
+#Slice 3 is now the working df. We will now print the highest earner
+highEarn=Slice3.nlargest(1,'wage')
+print "The highest earner is:" , highEarn
+#We will not print the lowest earner
+lowEarn=Slice3.nsmallest(1,'wage')
+print "The lowest earner is:" , lowEarn
+#We will not print the top 10 highest earning females
+females=Slice3[Slice3.gender=='female']
+top10f=females.nlargest(10, 'wage')
+print "The top ten highest earning females are:" , top10f
