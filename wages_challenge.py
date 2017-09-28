@@ -16,6 +16,20 @@ ge=ge.sort_values(['gender', 'yearsExperience'])
 print(ge)
 #--End Challenge 1--
 
+#--Start Challenge 2
+#return gender, yearsExp, and wage for highest earner
+highest_earner = wages.sort_values(['wage']).iloc[len(wages) - 1]
+print(highest_earner)
+
+#return gender, yearsExp, and wage for highest earner
+lowest_earner = wages.sort_values(['wage']).iloc[0]
+print(lowest_earner)
+
+#return number of females in top ten earnesr
+top_ten = wages.sort_values(['wage'],ascending=False).iloc[0:10]
+print(len(top_ten[top_ten.gender=="female"]))
+#-- End Challenge 2
+
 #--Start Challenge 3
 #Returns the yearsExp and wage columns
 minmax=wages.iloc[0:,2:]
