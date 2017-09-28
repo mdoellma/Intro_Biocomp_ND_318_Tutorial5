@@ -1,0 +1,77 @@
+#Part 1: Write file with gender and years experience sorted
+import pandas
+data = pandas.read_csv("wages.csv",header=0,sep=",") #to load the wages file
+gender_exp = data.iloc[:,0:2] #to select first two columns only (up to but not including index 2, only 0-1)
+sort_gender = gender_exp.sort_values(["gender","yearsExperience"]) #sort by gender and years experience
+sort_gender.to_csv("GenderExperience.csv",sep=" ") #write to file GenderExperience, include space between columns
+
+#Part 2: Return info to stdout
+#Highest earner
+print("Highest Earner")
+data2 = pandas.read_csv("wages.csv",header=0,sep=",") #load file
+gender_exp_wage = data2.iloc[:, [0,1,3]] #select the columns we want
+sort_wage = gender_exp_wage.sort_values(["wage"]) #sort by wage
+highest_earner = sort_wage.tail(1) #find the highest earner
+print(highest_earner) #print gender, years experience, and wage of highest earner to stdout
+
+#Lowest earner
+print("Lowest Earner")
+data3 = pandas.read_csv("wages.csv",header=0,sep=",") #load file
+gender_exp_wage2 = data3.iloc[:, [0,1,3]] #select the columns we want
+sort_wage2 = gender_exp_wage2.sort_values(["wage"]) #sort by wage
+lowest_earner = sort_wage2.head(1) #find the lowest earner
+print(lowest_earner) #print gender, years experience, and wage of lowest earner to stdout
+
+#Number of females
+print("Number of Females in Top Ten Earners")
+data4 = pandas.read_csv("wages.csv",header=0,sep=",") #load file
+gender_wage = data4.iloc[:, [0,3]] #select the columns we want
+sort_gender_wage = gender_wage.sort_values(["wage"]) #sort by wage
+top_ten = sort_gender_wage.tail(10) #find the highest 10 earners
+female_tally = 0
+for i in top_ten.gender:
+    if i == "female":
+        female_tally = female_tally + 1
+print(female_tally)   
+
+#Part 3: Difference between college and high school wages
+#For "grepping" with for loop, write to a separate output file to continue cutting/sorting grepped file
+import numpy
+import pandas
+fileOut = open("fileOut.tst","w") #making file to write to after "grepping" the years of school we want (16)
+fileIn = open("wages.csv","r") #readable file for input
+fileIn.readline() #skip first line because it is headers without integers
+for line in fileIn: #split into columns by "," if integer in [2] is 16, write line to fileOut (basically grep for 16)
+    if int(line.split(",")[2])==16:
+        #print(line) #just a print step to check
+        fileOut.write(line)
+yearschool16 = pandas.read_csv("fileOut.tst") #to open output file with 16 years in school column
+#print(yearschool16) #This was a print step to check; now # so it won't print
+wage_only = yearschool16.iloc[:,3] #show only wage column
+#print(wage_only) #this step, only for checking
+wage_sort=wage_only.sort_values() #sort wage column
+#print(wage_sort) #this step, only for checking
+low_wage16 = float(wage_sort.head(1)) #float is used because of the decimal in the number, can't use integer
+print("Lowest wage for college")
+print(low_wage16)
+
+fileOut2 = open("fileOut2.tst","w") #making file to write to for "grepping" 12 years
+fileIn2 = open("wages.csv","r") #readable file for input
+fileIn2.readline() #skip first line because it is headers without integers
+for line in fileIn2: #split into columns by "," if integer in [2] is 12, write line to fileOut2
+    if int(line.split(",")[2])==12:
+        #print(line)#this step, only for checking
+        fileOut2.write(line)
+yearschool12 = pandas.read_csv("fileOut2.tst") #to open output file with 12 years in school column
+#print(yearschool12) #this step, only for checking
+wage_only12 = yearschool12.iloc[:,3]
+#print(wage_only12) #this step, only for checking
+wage_sort12=wage_only12.sort_values()
+#print(wage_sort12) #this step, only for checking
+low_wage12 = float(wage_sort12.head(1))
+print("Lowest wage for high school")
+print(low_wage12)
+print("Difference in lowest wage between college and high school")
+difference = float(low_wage16) - float(low_wage12) #float used for decimal numbers
+print(difference)
+        
