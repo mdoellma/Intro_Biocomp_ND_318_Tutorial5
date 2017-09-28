@@ -41,16 +41,17 @@ def q2solution(wages):
     """
     earners = wages.drop(["yearsSchool"], axis=1)
     earners.sort_values(["wage"], inplace=True)
-    earners.head(n=0)
+    earners.head(n=1)
     
     earners = wages.drop(["yearsSchool"], axis=1)
     earners.sort_values(["wage"], inplace=True)
-    earners.tail(n=0)
+    earners.tail(n=1)
     
     earners = wages.drop(["yearsSchool"], axis=1)
     earners.sort_values(["wage"], inplace=True)
-    earners.head(n=10)
-    earners.filter("female")
+    earners.tail(n=10)
+    earners.ix['female']
+    # the code breaks down when I attempt to filter 
     series.str.len("earners")
     print("There are {0} females who are top ten earners.").".format(len("earners"))"
     return
