@@ -1,3 +1,5 @@
+# Exercise 5 Challenge Question 3
+
 import pandas
 wages=pandas.read_csv("wages.csv")
 years12=wages.wage[wages.yearsSchool==12]
