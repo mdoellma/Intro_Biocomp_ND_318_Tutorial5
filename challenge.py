@@ -35,6 +35,7 @@ import pandas
 wages=pandas.read_csv("wages.csv", delimiter=",")
 
 #Returns Higest and Lowest Earner in Dataset
+selectcolumn=wages.iloc[:,[0,1,3]]
 High=wages.sort_values('wage', ascending = False)
 High=High.iloc[0:1]
 print "The highest earner is:",'\n',High
@@ -57,6 +58,10 @@ print female_tally
         
 #Q3
 columnQ3=wages.iloc[:,2:4]
-print columnQ3
-
+low=wages.wage[wages.yearsSchool == 12]
+high=wages.wage[wages.yearsSchool == 16]
+lowwage=min(low)
+highwage=min(high)
+difference=highwage-lowwage
+print "Difference in wages of 12vs16 years college:", difference
 
