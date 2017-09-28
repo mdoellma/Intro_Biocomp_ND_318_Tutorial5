@@ -49,12 +49,13 @@ def q2solution(wages):
     
     earners = wages.drop(["yearsSchool"], axis=1)
     earners.sort_values(["wage"], inplace=True)
-    earners.tail(n=10)
-    earners.ix['female']
-    # the code breaks down when I attempt to filter 
-    series.str.len("earners")
-    print("There are {0} females who are top ten earners.").".format(len("earners"))"
+    topten=earners.tail(n=10)
+    print (topten[topten.gender == "female"])
+  
+
+    print("There are {0} females in the top ten earners.") #### I'm unsure of how to count the #of females, but I have them printed to stdout (without a description).
     return
+
 def q3solution(wages):
     """
     Prints to stdout the difference in minimum wage for yearsSchool 12 (HS)
