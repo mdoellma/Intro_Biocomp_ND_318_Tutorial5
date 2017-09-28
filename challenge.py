@@ -42,7 +42,7 @@ Low=wages.sort_values('wage', ascending = False)
 Low=Low.iloc[-1]
 print "The lowest earner is:",'\n',Low
 
-
+#Returns number of females in top 10 earners 
 w = wages.sort_values('wage', ascending = False)
 w10 = w.iloc[:10] #need 10 because first one is column headers
 print w10
