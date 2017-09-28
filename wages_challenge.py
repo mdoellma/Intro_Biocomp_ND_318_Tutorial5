@@ -4,6 +4,7 @@ import pandas
 #creates workable data set
 wages=pandas.read_csv("wages.csv")
 
+#--Start Challenge 1--
 #returns the gender and yearsExperience columns
 ge=wages.iloc[0:,0:2]
 
@@ -13,3 +14,22 @@ ge=ge.drop_duplicates()
 #sorts the columns by gender then yearsExperience
 ge=ge.sort_values(['gender', 'yearsExperience'])
 print(ge)
+#--End Challenge 1--
+
+#--Start Challenge 3
+#Returns the yearsExp and wage columns
+minmax=wages.iloc[0:,2:]
+
+#Sorts the set by the yearsExp column
+minmax=minmax.sort_values(['yearsSchool'])
+
+#Finds and sets a variable for the lowest 16yr earner and lowest 12yr earner
+min=minmax.head(n=1)
+min=min.iloc[0,1]
+max=minmax.tail(n=1)
+max=max.iloc[0,1]
+
+#Does the aritmetic and prints the value
+D=max-min
+print('Increase in minimum wage after graduating college is' , D)
+#--End of Challenge 3--
