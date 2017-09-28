@@ -39,8 +39,21 @@ def q2solution(wages):
     The lowest earner makes 0.086, is male and has 4 years of experience.
     There are 3 females in the top ten earners.
     """
+    earners = wages.drop(["yearsSchool"], axis=1)
+    earners.sort_values(["wage"], inplace=True)
+    earners.head(n=0)
+    
+    earners = wages.drop(["yearsSchool"], axis=1)
+    earners.sort_values(["wage"], inplace=True)
+    earners.tail(n=0)
+    
+    earners = wages.drop(["yearsSchool"], axis=1)
+    earners.sort_values(["wage"], inplace=True)
+    earners.head(n=10)
+    earners.filter("female")
+    series.str.len("earners")
+    print("There are {0} females who are top ten earners.").".format(len("earners"))"
     return
-
 def q3solution(wages):
     """
     Prints to stdout the difference in minimum wage for yearsSchool 12 (HS)
