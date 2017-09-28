@@ -55,7 +55,8 @@ for i in w10.gender:
 print "Number of females in top ten earners is:" 
 print female_tally
         
-
-
+#Q3
+columnQ3=wages.iloc[:,2:4]
+print columnQ3
 
 
