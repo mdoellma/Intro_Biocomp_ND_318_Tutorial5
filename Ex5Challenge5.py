@@ -17,12 +17,12 @@ def q1solution(wages):
 	# remove yearsSchool and wage columns from the data set
     ordered = wages.drop(["yearsSchool", "wage"], axis=1)
 	# sort by gender then yearsExperience, so that the output consists of
-	# 	blocks of gender sorted alphabetically (e.g. female then male) 
+	# 	blocks of gender sorted alphabetically (e.g. female then male)
 	# 	sorted numerically by yearsExperience (i.e. female 1-18 followed by male 2-19)
     ordered.sort_values(["gender", "yearsExperience"], inplace=True)
 	# removes non-unique rows on "ordered" object
     ordered.drop_duplicates(inplace=True)
-	# writes out a space-delimited csv file containing only unique 
+	# writes out a space-delimited csv file containing only unique
 	# 	gender-yearsExperience pairs to :gender-yearsExperience.txt"
     ordered.to_csv('gender-yearsExperience.txt', sep=' ', index=False)
     return
@@ -54,10 +54,10 @@ def q2solution(wages):
     print("Above is the gender, years experience, and wage of the lowest paid individual")
     print(earners.tail(n=1))
     print("Above is the gender, years experience, and wage of the highest paid individual")
-    topten=earners.tail(n=10)
+    topten = earners.tail(n=10)
     toptenfemales = (topten[topten.gender == "female"])
     print(len(toptenfemales))
-    print("Above is the number of females in the top ten earners.")  
+    print("Above is the number of females in the top ten earners.")
     return
 def q3solution(wages):
     """
