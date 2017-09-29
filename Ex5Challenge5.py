@@ -5,8 +5,8 @@ Exercise 5 Challenge
 Grant Keller and Kathleen Nicholson
 """
 from __future__ import print_function
+import sys
 import pandas
-import numpy
 
 def q1solution(wages):
     """
@@ -14,12 +14,18 @@ def q1solution(wages):
     in the data set given (wages.csv). These are written to file
     "gender-yearsExperience.txt" saved in the current working directory.
     """
+	# remove yearsSchool and wage columns from the data set
     ordered = wages.drop(["yearsSchool", "wage"], axis=1)
+	# sort by gender then yearsExperience, so that the output consists of
+	# 	blocks of gender sorted alphabetically (e.g. female then male) 
+	# 	sorted numerically by yearsExperience (i.e. female 1-18 followed by male 2-19)
     ordered.sort_values(["gender", "yearsExperience"], inplace=True)
+	# removes non-unique rows on "ordered" object
     ordered.drop_duplicates(inplace=True)
+	# writes out a space-delimited csv file containing only unique 
+	# 	gender-yearsExperience pairs to :gender-yearsExperience.txt"
     ordered.to_csv('gender-yearsExperience.txt', sep=' ', index=False)
     return
-
 def q2solution(wages):
     """
     #############################
@@ -68,15 +74,15 @@ def q3solution(wages):
     >>> testW =[2.094,12.861,6.105,3.980,5.631,1.345,3.894,1.355,4.443,3.98,0.086]
     >>> d = {'gender' : testG,'yearsExperience' : testYE,'yearsSchool' : testYS,'wage' : testW}
     >>> df = pandas.DataFrame(data=d)
-    >>> Q3solution(df)
+    >>> q3solution(df)
     Those with a 4 year degree (16 yearsSchool) earned 2.635 more than those with just a high school degree (12 yearsSchool).
     """
+	# Anonymous function which returns the smallest wage given a pandas dataframe
+	# 	to search through and a number of years in school to search by.
     min_wage = lambda wages, num: min(wages.wage[wages.yearsSchool == num])
     print("Those with a 4 year degree (16 yearsSchool) earned {0} more than those with just a high school degree (12 yearsSchool).".format(min_wage(wages, 16)-min_wage(wages, 12)))
     return
-
 ################################
-
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
