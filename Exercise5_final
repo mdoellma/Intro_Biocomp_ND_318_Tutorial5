@@ -12,6 +12,7 @@ os.chdir('C:\\Users\\joshu\\OneDrive\\github\\BioComp\\Intro_Biocomp_ND_318_Tuto
 os.chdir('/Users/omneelay/Desktop/Exercise5/Intro_Biocomp_ND_318_Tutorial5/')
     #Import Wages file
 wages=pandas.read_csv("wages.csv")
+sortedwages=wages.sort_values(by='wage')
 
 #START OF CHALLENGE 1
 #isolate 2 columns: Gender and YearsExperience 
