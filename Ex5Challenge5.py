@@ -41,19 +41,20 @@ def q2solution(wages):
     """
     earners = wages.drop(["yearsSchool"], axis=1)
     earners.sort_values(["wage"], inplace=True)
-    earners.head(n=1)
+    print (earners.head(n=1))
+    print ("Above is the gender, years experience, and wage of the lowest paid individual")
     
     earners = wages.drop(["yearsSchool"], axis=1)
     earners.sort_values(["wage"], inplace=True)
-    earners.tail(n=1)
+    print (earners.tail(n=1))
+    print ("Above is the gender, years experience, and wage of the highest paid individual")
     
     earners = wages.drop(["yearsSchool"], axis=1)
     earners.sort_values(["wage"], inplace=True)
     topten=earners.tail(n=10)
-    print (topten[topten.gender == "female"])
-  
-
-    print("There are {0} females in the top ten earners.") #### I'm unsure of how to count the #of females, but I have them printed to stdout (without a description).
+    toptenfemales = (topten[topten.gender == "female"])
+    print (len(toptenfemales.index))
+    print("Above is the number of females in the top ten earners.")  
     return
 
 def q3solution(wages):
